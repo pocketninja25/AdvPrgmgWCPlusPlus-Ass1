@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\SquareClasses">
+      <UniqueIdentifier>{8b63a500-a62a-400f-803b-b38b75f5b21e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SquareClasses">
+      <UniqueIdentifier>{daee7676-3e25-43c5-be9a-ed8fe53569a5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -21,39 +27,36 @@
     <ClCompile Include="Random.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CBonusSquare.cpp">
+      <Filter>Source Files\SquareClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="CFreeParkingSquare.cpp">
+      <Filter>Source Files\SquareClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="CGoSquare.cpp">
+      <Filter>Source Files\SquareClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="CGameSquare.cpp">
+      <Filter>Source Files\SquareClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="CGoToJailSquare.cpp">
+      <Filter>Source Files\SquareClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="CJailSquare.cpp">
+      <Filter>Source Files\SquareClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenaltySquare.cpp">
+      <Filter>Source Files\SquareClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="CPropertySquare.cpp">
+      <Filter>Source Files\SquareClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="CRetailParkSquare.cpp">
+      <Filter>Source Files\SquareClasses</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Random.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CTileFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CGameTile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CPropertyTile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CGoTile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CRetailParkTile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CBonusTile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CPenaltyTile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CJailTile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CGoToJailTile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CFreeParkingTile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Constants.h">
@@ -61,6 +64,39 @@
     </ClInclude>
     <ClInclude Include="CPlayer.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CMonopoly.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CSquareFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CBonusSquare.h">
+      <Filter>Header Files\SquareClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="CFreeParkingSquare.h">
+      <Filter>Header Files\SquareClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="CGameSquare.h">
+      <Filter>Header Files\SquareClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="CGoSquare.h">
+      <Filter>Header Files\SquareClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="CGoToJailSquare.h">
+      <Filter>Header Files\SquareClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="CJailSquare.h">
+      <Filter>Header Files\SquareClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenaltySquare.h">
+      <Filter>Header Files\SquareClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="CPropertySquare.h">
+      <Filter>Header Files\SquareClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="CRetailParkSquare.h">
+      <Filter>Header Files\SquareClasses</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

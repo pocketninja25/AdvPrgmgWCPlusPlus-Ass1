@@ -1,23 +1,23 @@
-#ifndef CTILEFACTORY_H
-#define CTILEFACTORY_H
+#ifndef CSQUAREFACTORY_H
+#define CSQUAREFACTORY_H
 
-class CTileFactory
+class CSquareFactory
 {
 private:
-	//Might need ifstream here, and an array/vector of tiles
+	//Might need ifstream here, and an array/vector of Squares
 
 public:
 	//Constructor
-	CTileFactory();
+	CSquareFactory();
 
 	//Destructor
-	~CTileFactory();
+	~CSquareFactory();
 
 	//Load From file function
 
 	//Create Property Function (1)
 
-	//Create Go Tile Function (2)
+	//Create Go Square Function (2)
 
 	//Create Retail Park Function (3)
 

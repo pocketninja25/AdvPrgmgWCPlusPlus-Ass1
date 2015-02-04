@@ -38,7 +38,21 @@ int main()
 	//Play for 20 rounds
 	//Welcome message - 'Welcome to Monopoly'
 
+	///****TURN DYNAMICS****//
+	//Each turn display '<Player> rolls <number>'
+		//- Followed by '<Player> lands on <square name>'
+	//if property not owned player will buy it (if positive money)
+		//- '<Player> buys <square name> for <cost>’
+		//- if property owned by player who landed, nothing happens
+		//- if property owned by another player - pay owner a fee of £10
+		//- '<Player> pays <rent>’
+		//- '<Player> pays £10 flying costs’ - on airports
+			//- includes something about if special squares not implemented in the documentation - possibly irrelevant
+	//At end of turn display '<Player> has <current balance>’
+	///****END OF TURN DYNAMICS****//
 
+
+	
 	/********END MAIN GAME NOTES*******/
 
 

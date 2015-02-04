@@ -78,22 +78,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CBonusSquare.cpp" />
+    <ClCompile Include="CFreeParkingSquare.cpp" />
+    <ClCompile Include="CGameSquare.cpp" />
+    <ClCompile Include="CGoSquare.cpp" />
+    <ClCompile Include="CGoToJailSquare.cpp" />
+    <ClCompile Include="CJailSquare.cpp" />
+    <ClCompile Include="CPenaltySquare.cpp" />
+    <ClCompile Include="CPropertySquare.cpp" />
+    <ClCompile Include="CRetailParkSquare.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Random.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CBonusTile.h" />
-    <ClInclude Include="CFreeParkingTile.h" />
-    <ClInclude Include="CGameTile.h" />
-    <ClInclude Include="CGoTile.h" />
-    <ClInclude Include="CGoToJailTile.h" />
-    <ClInclude Include="CJailTile.h" />
+    <ClInclude Include="CBonusSquare.h" />
+    <ClInclude Include="CFreeParkingSquare.h" />
+    <ClInclude Include="CGameSquare.h" />
+    <ClInclude Include="CGoSquare.h" />
+    <ClInclude Include="CGoToJailSquare.h" />
+    <ClInclude Include="CJailSquare.h" />
     <ClInclude Include="Constants.h" />
-    <ClInclude Include="CPenaltyTile.h" />
+    <ClInclude Include="CPenaltySquare.h" />
     <ClInclude Include="CPlayer.h" />
-    <ClInclude Include="CPropertyTile.h" />
-    <ClInclude Include="CRetailParkTile.h" />
-    <ClInclude Include="CTileFactory.h" />
+    <ClInclude Include="CPropertySquare.h" />
+    <ClInclude Include="CRetailParkSquare.h" />
+    <ClInclude Include="CSquareFactory.h" />
+    <ClInclude Include="CMonopoly.h" />
     <ClInclude Include="Random.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

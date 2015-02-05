@@ -1,4 +1,5 @@
 #include "CPenaltySquare.h"
+#include <sstream>
 
 CPenaltySquare::CPenaltySquare(string iSquareName) : CGameSquare(iSquareName)
 {
@@ -10,13 +11,15 @@ CPenaltySquare::~CPenaltySquare()
 	//Nothing to destruct
 }
 
-void CPenaltySquare::OnPassOver(CPlayer* passingPlayer)
+string CPenaltySquare::OnPassOver(CPlayer* passingPlayer)	//This function will need to return any output statements either via stringstream or string
 {
 	//Nothing Happens
+	return "";
 }
 
-void CPenaltySquare::OnLand(CPlayer* landingPlayer)
+string CPenaltySquare::OnLand(CPlayer* landingPlayer)	//This function will need to return any output statements either via stringstream or string
 {
+	stringstream out;
 	//On Land -	Random event - 
 	//Pay food bill. Player loses £20.
 	//Pay phone bill. Player loses £50
@@ -29,4 +32,5 @@ void CPenaltySquare::OnLand(CPlayer* landingPlayer)
 		//'<Player> lands on Penalty'
 		//'Pay food bill. Player loses £20' <<THIS IS THE SPECIFIC EVENT>>
 		//'<Player> has <current balance>'
+	return out.str();
 }

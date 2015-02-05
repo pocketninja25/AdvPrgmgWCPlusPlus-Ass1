@@ -1,22 +1,23 @@
 #ifndef CRETAILPARKSQUARE_H
 #define CRETAILPARKSQUARE_H
 
-#include "CGameSquare.h"
+#include "CPropertySquare.h"
 
 //Type 3 Square
 
-class CRetailParkSquare : public CGameSquare
+class CRetailParkSquare : public CPropertySquare
 {
 private:
-
+	
 public:
 	CRetailParkSquare(string iSquareName);
 
 	virtual ~CRetailParkSquare();
 
-	void OnPassOver(CPlayer* passingPlayer);
+	//May need to force overload - not sure
+	//string OnPassOver(CPlayer* passingPlayer);
 
-	void OnLand(CPlayer* landingPlayer);
+	//string OnLand(CPlayer* landingPlayer);
 };
 
 #endif

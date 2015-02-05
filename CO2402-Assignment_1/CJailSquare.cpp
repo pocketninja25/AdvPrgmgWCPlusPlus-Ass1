@@ -1,4 +1,5 @@
 #include "CJailSquare.h"
+#include <sstream>
 
 CJailSquare::CJailSquare(string iSquareName) : CGameSquare(iSquareName)
 {
@@ -10,13 +11,15 @@ CJailSquare::~CJailSquare()
 	//Nothing to destruct
 }
 
-void CJailSquare::OnPassOver(CPlayer* passingPlayer)
+string CJailSquare::OnPassOver(CPlayer* passingPlayer)	//This function will need to return any output statements either via stringstream or string
 {
 	//Nothing Happens
+	return "";
 }
 
-void CJailSquare::OnLand(CPlayer* landingPlayer)
+string CJailSquare::OnLand(CPlayer* landingPlayer)	//This function will need to return any output statements either via stringstream or string
 {
+	stringstream out;
 	//On land - If player is 'in jail'
 	//- /*'<Player> goes to Jail'
 	//Take 50£ from player
@@ -28,4 +31,5 @@ void CJailSquare::OnLand(CPlayer* landingPlayer)
 	//Player is not 'in jail'
 	//- '<Player> lands on Jail'
 	//- <Player> is just visiting'
+	return out.str();
 }

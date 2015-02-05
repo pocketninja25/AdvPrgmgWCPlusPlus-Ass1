@@ -5,7 +5,7 @@
 
 //Type 8 Square
 
-class CFreeParkingSquare : CGameSquare
+class CFreeParkingSquare : public CGameSquare
 {
 private:
 
@@ -14,9 +14,9 @@ public:
 
 	virtual ~CFreeParkingSquare();
 
-	void OnPassOver(CPlayer* pasingPlayer);
+	string OnPassOver(CPlayer* pPassingPlayer);
 
-	void OnLand(CPlayer* landingPlayer);
+	string OnLand(CPlayer* pLandingPlayer);
 
 
 	

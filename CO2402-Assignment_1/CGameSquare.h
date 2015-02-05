@@ -2,7 +2,10 @@
 #define CGAMESQUARE_H
 
 #include <string>
-using namespace std;
+using std::string;
+using std::stringstream;
+using std::endl;
+
 //Generic Square Class (Wants to be abstract most probably)
 #include "CPlayer.h"
 
@@ -17,11 +20,12 @@ public:
 	virtual ~CGameSquare();
 
 	//Passes over event function
-	virtual void OnPassOver(CPlayer* passingPlayer) = 0;
+	virtual string OnPassOver(CPlayer* pPassingPlayer) = 0;
 
-		//Lands on event function
-	virtual void OnLand(CPlayer* landingPlayer) = 0;
+	//Lands on event function
+	virtual string OnLand(CPlayer* pLandingPlayer) = 0;
 
+	string GetName();
 };
 
 #endif

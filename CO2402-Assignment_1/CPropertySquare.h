@@ -5,23 +5,21 @@
 
 //Type 1 Square
 
-//Colour groups - Brown, light green, red, blue, green, light blue, yellow, purple & two airports
-
 class CPropertySquare : public CGameSquare
 {
 private:
-	//Colour group - (of which there are 6) - enum?
-	//Cost - int
-	//Rent - int
+	EPropertyGroup mGroup;
+	int mPurchaseCost;
+	int mRent;
 
 public:
-	CPropertySquare(string iSquareName);
+	CPropertySquare(string iSquareName, EPropertyGroup iGroup, int iPurchaseCost, int iRent);
 
 	virtual ~CPropertySquare();
 
-	void OnPassOver(CPlayer* passingPlayer);
+	string OnPassOver(CPlayer* passingPlayer);
 
-	void OnLand(CPlayer* landingPlayer);
+	string OnLand(CPlayer* landingPlayer);
 };
 
 #endif

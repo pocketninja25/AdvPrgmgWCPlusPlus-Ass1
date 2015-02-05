@@ -54,6 +54,15 @@
     <ClCompile Include="CRetailParkSquare.cpp">
       <Filter>Source Files\SquareClasses</Filter>
     </ClCompile>
+    <ClCompile Include="CSquareFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CMonopoly.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Random.h">

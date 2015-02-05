@@ -14,9 +14,9 @@ public:
 
 	virtual ~CPenaltySquare();
 
-	void OnPassOver(CPlayer* passingPlayer);
+	string OnPassOver(CPlayer* passingPlayer);
 
-	void OnLand(CPlayer* landingPlayer);
+	string OnLand(CPlayer* landingPlayer);
 
 };
 

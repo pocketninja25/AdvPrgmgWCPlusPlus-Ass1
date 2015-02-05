@@ -9,3 +9,8 @@ CGameSquare::~CGameSquare()
 {
 
 }
+
+string CGameSquare::GetName()
+{
+	return mSquareName;
+}

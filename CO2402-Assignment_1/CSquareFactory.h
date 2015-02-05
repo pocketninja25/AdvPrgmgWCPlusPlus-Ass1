@@ -1,10 +1,52 @@
 #ifndef CSQUAREFACTORY_H
 #define CSQUAREFACTORY_H
 
+#include <vector>
+using std::vector;
+using std::ifstream;
+#include <fstream>
+#include "CGameSquare.h"
+#include "CPropertySquare.h"
+#include "CGoSquare.h"
+#include "CRetailParkSquare.h"
+#include "CBonusSquare.h"
+#include "CPenaltySquare.h"
+#include "CJailSquare.h"
+#include "CGoToJailSquare.h"
+#include "CFreeParkingSquare.h"
+
 class CSquareFactory
 {
 private:
-	//Might need ifstream here, and an array/vector of Squares
+	vector<CGameSquare*>* mpGameBoard;
+	ifstream mInStream;
+
+	//Get the name of a square
+	string GetName();
+
+	//Create Property Function (1)
+	CGameSquare* CreateProperty();
+
+	//Create Go Square Function (2)
+	CGameSquare* CreateGo();
+
+	//Create Retail Park Function (3)
+	CGameSquare* CreateRetailPark();
+
+	//Create Bonus Function (4)
+	CGameSquare* CreateBonus();
+
+	//Create Penalty Function (5)
+	CGameSquare* CreatePenalty();
+
+	//Create Jail Function (6)
+	CGameSquare* CreateJail();
+
+	//Create Go to Jail Function (7)
+	CGameSquare* CreateGoToJail();
+
+	//Create Free Parking Function (8)
+	CGameSquare* CreateFreeParking();
 
 public:
 	//Constructor
@@ -14,22 +56,7 @@ public:
 	~CSquareFactory();
 
 	//Load From file function
-
-	//Create Property Function (1)
-
-	//Create Go Square Function (2)
-
-	//Create Retail Park Function (3)
-
-	//Create Bonus Function (4)
-
-	//Create Penalty Function (5)
-
-	//Create Jail Function (6)
-
-	//Create Go to Jail Function (7)
-
-	//Create Free Parking Function (8)
+	void LoadSquares(string fileName, vector<CGameSquare*>* piList);
 
 };
 

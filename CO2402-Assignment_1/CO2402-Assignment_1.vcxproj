@@ -84,9 +84,12 @@
     <ClCompile Include="CGoSquare.cpp" />
     <ClCompile Include="CGoToJailSquare.cpp" />
     <ClCompile Include="CJailSquare.cpp" />
+    <ClCompile Include="CMonopoly.cpp" />
     <ClCompile Include="CPenaltySquare.cpp" />
+    <ClCompile Include="CPlayer.cpp" />
     <ClCompile Include="CPropertySquare.cpp" />
     <ClCompile Include="CRetailParkSquare.cpp" />
+    <ClCompile Include="CSquareFactory.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Random.cpp" />
   </ItemGroup>

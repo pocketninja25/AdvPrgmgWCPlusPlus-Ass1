@@ -1,8 +1,10 @@
 #include "CPropertySquare.h"
-
-CPropertySquare::CPropertySquare(string iSquareName) : CGameSquare(iSquareName)
+#include <sstream>
+CPropertySquare::CPropertySquare(string iSquareName, EPropertyGroup iGroup, int iPurchaseCost, int iRent) : CGameSquare(iSquareName)
 {
-	//No additional construction
+	mGroup = iGroup;
+	mPurchaseCost = iPurchaseCost;
+	mRent = iRent;
 }
 
 CPropertySquare::~CPropertySquare()
@@ -10,12 +12,16 @@ CPropertySquare::~CPropertySquare()
 	//Nothing to destruct
 }
 
-void CPropertySquare::OnPassOver(CPlayer* passingPlayer)
+string CPropertySquare::OnPassOver(CPlayer* passingPlayer)	
 {
 	//Nothing Happens
+	return "";
 }
 
-void CPropertySquare::OnLand(CPlayer* landingPlayer)
+string CPropertySquare::OnLand(CPlayer* landingPlayer)	
 {
-
+	stringstream out;
+	
+	
+	return "";
 }

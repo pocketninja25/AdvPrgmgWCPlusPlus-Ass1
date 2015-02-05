@@ -1,19 +1,35 @@
 #ifndef CMONOPOLY_H
 #define CMONOPOLY_H
 
-//Include some stl container
+#include <vector>
+using std::vector;
+#include <iostream>
+using std::cout;
+#include "CSquareFactory.h"
+#include "Random.h"
 
 //Monopoly is a singleton - there will only be one - it is the manager class
 
 class CMonopoly
 {
 private:
-	//container of players
-	//container of squares(Squares)
+	CSquareFactory mSquareCreation;
+	vector<CGameSquare*> mGameBoard;
+
+	vector<CPlayer*> mPlayers;
+
+	unsigned int mTurnNo;
 
 public:
+	CMonopoly();
 
-	//Perhaps have a function that unfolds a turn at a time - and another that can unfold till the end of the game
+	~CMonopoly();
+
+	void OutputBoard();
+
+	void TakeTurn();
+
+	void PlayTurns(unsigned int noTurns);
 
 };
 

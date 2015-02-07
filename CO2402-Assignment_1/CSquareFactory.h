@@ -3,12 +3,12 @@
 
 #include <vector>
 using std::vector;
-using std::ifstream;
 #include <fstream>
+using std::ifstream;
+
 #include "CGameSquare.h"
 #include "CPropertySquare.h"
 #include "CGoSquare.h"
-#include "CRetailParkSquare.h"
 #include "CBonusSquare.h"
 #include "CPenaltySquare.h"
 #include "CJailSquare.h"
@@ -18,7 +18,7 @@ using std::ifstream;
 class CSquareFactory
 {
 private:
-	vector<CGameSquare*>* mpGameBoard;
+	vector<CGameSquare*>* mpSquareList;
 	ifstream mInStream;
 
 	//Get the name of a square
@@ -47,6 +47,8 @@ private:
 
 	//Create Free Parking Function (8)
 	CGameSquare* CreateFreeParking();
+
+	void AssociateProperty(CPropertySquare* piNewProp);
 
 public:
 	//Constructor

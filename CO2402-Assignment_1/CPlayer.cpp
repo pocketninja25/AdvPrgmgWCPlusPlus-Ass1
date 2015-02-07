@@ -3,7 +3,7 @@
 CPlayer::CPlayer(EPlayerPieces iPiece)
 {
 	mPiece = iPiece;
-	mBalance = 200;
+	mBalance = 1500;
 	mInJail = false;
 	mBoardPos = 0;
 }
@@ -25,7 +25,7 @@ void CPlayer::SetBoardPosition(unsigned int newPos)
 
 string CPlayer::GetName()
 {
-	return PieceNames[mPiece];
+	return gPIECE_NAMES[mPiece];
 }
 
 void CPlayer::GiveCash(int amount)
@@ -41,4 +41,19 @@ void CPlayer::TakeCash(int amount)
 int CPlayer::GetBalance()
 {
 	return mBalance;
+}
+
+bool CPlayer::IsInJail()
+{
+	return mInJail;
+}
+
+void CPlayer::SetJailState(bool newJailState)
+{
+	mInJail = newJailState;
+}
+
+void CPlayer::BecomeOwner(CPropertySquare* pNewProperty)
+{	
+	mOwnedProperties.push_back(pNewProperty);
 }

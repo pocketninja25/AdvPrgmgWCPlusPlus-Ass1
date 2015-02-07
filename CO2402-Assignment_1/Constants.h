@@ -4,14 +4,14 @@
 #include <string>
 using std::string;
 
-const unsigned char POUND = 156;
+const unsigned char gPOUND = 156;
 
-enum EPlayerPieces {PIECE_DOG, PIECE_CAR, PIECE_SIZE};
+enum EPlayerPieces {PIECE_DOG, PIECE_CAR, PIECE_BOAT, PIECE_HORSE, PIECE_HAT, PIECE_IRON, PIECE_BOOT, PIECE_WHEELBARROW, PIECE_THIMBLE, PIECE_CANNON, PIECE_SIZE};
 
-const string PieceNames[PIECE_SIZE] = { "Dog", "Car" };
+const string gPIECE_NAMES[PIECE_SIZE] = { "Dog", "Car", "Boat", "Horse", "Hat", "Iron", "Boot", "Wheelbarrow", "Thimble", "Cannon" };
 
 enum ESquareCategory {CATEGORY_PROPERTY, CATEGORY_GO, CATEGORY_RETAILPARK, CATEGORY_BONUS, CATEGORY_PENALTY, CATEGORY_JAIL, CATEGORY_GOTOJAIL, CATEGORY_FREEPARKING};
 
 enum EPropertyGroup {GROUP_GREEN, GROUP_RED, GROUP_GREY, GROUP_ORANGE, GROUP_YELLOW, GROUP_DARKGREEN, GROUP_BLUE, GROUP_PURPLE, GROUP_RETAILPARK};
 
-#endif;
+#endif

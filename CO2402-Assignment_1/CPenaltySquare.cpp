@@ -1,7 +1,7 @@
 #include "CPenaltySquare.h"
 #include <sstream>
 
-CPenaltySquare::CPenaltySquare(string iSquareName) : CGameSquare(iSquareName)
+CPenaltySquare::CPenaltySquare(string iSquareName) : CGameSquare(iSquareName, CATEGORY_PENALTY)
 {
 	//No additional construction
 }
@@ -19,18 +19,50 @@ string CPenaltySquare::OnPassOver(CPlayer* passingPlayer)	//This function will n
 
 string CPenaltySquare::OnLand(CPlayer* landingPlayer)	//This function will need to return any output statements either via stringstream or string
 {
+	//Generate a random number - this determines the penalty event that occurs
+	int eventID = Random();
+	//Create output stream
 	stringstream out;
-	//On Land -	Random event - 
-	//Pay food bill. Player loses £20.
-	//Pay phone bill. Player loses £50
-	//Pay heating bill. Player loses £100.
-	//Pay vehicle tax. Player loses £150.
-	//Pay fuel bill. Player loses £200
-	//Pay windfall tax. Player loses £300
 
-	//oUTPUT 
-		//'<Player> lands on Penalty'
-		//'Pay food bill. Player loses £20' <<THIS IS THE SPECIFIC EVENT>>
-		//'<Player> has <current balance>'
+	int amountLost = 0;	//The amount of money the player gains from this bonus
+
+	//Output the event name and set the amount of money the player gains
+	switch (eventID)
+	{
+	case 1:
+
+		out << "Pay food bill: ";
+		amountLost = 20;
+		break;
+	case 2:
+		out << "Pay phone bill: ";
+		amountLost = 50;
+		break;
+	case 3:
+		out << "Pay heating bill: ";
+		amountLost = 100;
+		break;
+	case 4:
+		out << "Pay vehicle tax: ";
+		amountLost = 150;
+		break;
+	case 5:
+		out << "Pay fuel bill: ";
+		amountLost = 200;
+		break;
+	case 6:
+		out << "Pay windfall tax: ";
+		amountLost = 300;
+		break;
+	default:
+		break;
+	}
+
+	//Finish the output (this is output regardless of the bonus selected
+	out << landingPlayer->GetName() << " loses " << gPOUND << amountLost << endl;
+	//Give the player the specified amount of money for the bonus they landed on
+	landingPlayer->TakeCash(amountLost);
+
+	//Convert the output to a string and return it
 	return out.str();
 }

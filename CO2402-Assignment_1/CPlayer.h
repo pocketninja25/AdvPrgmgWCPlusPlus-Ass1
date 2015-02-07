@@ -1,8 +1,14 @@
 #ifndef CPLAYER_H
 #define CPLAYER_H
 
+#include <vector>
+using std::vector;
+
 #include "Constants.h"
+
 //Players do not go bankrupt - balance can be negative
+
+class CPropertySquare;
 
 class CPlayer
 {
@@ -11,6 +17,7 @@ private:
 	int mBalance;
 	bool mInJail;
 	unsigned int mBoardPos;
+	vector<CPropertySquare*> mOwnedProperties;
 
 public:
 	CPlayer(EPlayerPieces iPiece);
@@ -21,16 +28,18 @@ public:
 
 	string GetName();
 
-	bool PurchaseProperty();	//Return whether the purchase was successful - and perform the purchase action
-
 	void GiveCash(int amount);
 
 	void TakeCash(int amount);
 
 	int GetBalance();
-	//Call the passes over event not for the starting space, but each subsequent space - not including the landing on space
 
-	//Roll Dice Function - Here or maybe in monopoly class
+	bool IsInJail();
+
+	void SetJailState(bool newJailState);
+
+	void BecomeOwner(CPropertySquare* pNewProperty);
+
 };
 
 #endif

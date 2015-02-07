@@ -2,6 +2,7 @@
 #define CPENALTYSQUARE_H
 
 #include "CGameSquare.h"
+#include "Random.h"
 
 //Type 5 Square
 
@@ -14,9 +15,9 @@ public:
 
 	virtual ~CPenaltySquare();
 
-	string OnPassOver(CPlayer* passingPlayer);
+	string OnPassOver(CPlayer* pPassingPlayer);
 
-	string OnLand(CPlayer* landingPlayer);
+	string OnLand(CPlayer* pLandingPlayer);
 
 };
 

@@ -1,25 +1,56 @@
 #include "CMonopoly.h"
 
-CMonopoly::CMonopoly()
+#ifdef _DEBUG
+#define DEBUG_NEW_PLACEMENT (_NORMAL_BLOCK, __FILE__, __LINE__)
+#else
+#define DEBUG_NEW_PLACEMENT
+#endif
+
+CMonopoly* CMonopoly::mpInstance = 0;
+
+CMonopoly* CMonopoly::GetInstance(int noPlayers)
 {
+	if (!mpInstance)	//If an instance does not already exist
+	{
+		//Make mInstance a new instance of CMonopoly
+		mpInstance = new DEBUG_NEW_PLACEMENT CMonopoly(noPlayers);
+	}
+	
+	return mpInstance;
+
+}
+
+CMonopoly::CMonopoly(int noPlayers)
+{
+	srand(4);
 	mSquareCreation.LoadSquares("Monopoly.txt", &mGameBoard);
-	mPlayers.push_back(new CPlayer(PIECE_DOG));
-	mPlayers.push_back(new CPlayer(PIECE_CAR));
+	for (int i = 0; i < PIECE_SIZE && i < noPlayers; i++)
+	{
+		mPlayers.push_back(new DEBUG_NEW_PLACEMENT CPlayer((EPlayerPieces) i));
+	}
 	mTurnNo = 0;
+	
+	cout << "Welcome To Monopoly" << endl;
 }
 
 CMonopoly::~CMonopoly()
 {
-	while (!mGameBoard.empty())
+	if (mpInstance)
 	{
-		delete mGameBoard.back();
-		mGameBoard.pop_back();
+		while (!mGameBoard.empty())
+		{
+			delete mGameBoard.back();
+			mGameBoard.pop_back();
+		}
+		while (!mPlayers.empty())
+		{
+			delete mPlayers.back();
+			mPlayers.pop_back();
+		}
 	}
-	while (!mPlayers.empty())
-	{
-		delete mPlayers.back();
-		mPlayers.pop_back();
-	}
+
+	//There is no instance
+	mpInstance = 0;
 }
 
 void CMonopoly::OutputBoard()
@@ -30,53 +61,80 @@ void CMonopoly::OutputBoard()
 	}
 }
 
-void CMonopoly::TakeTurn()
+void CMonopoly::PlayRound()
 {
 	mTurnNo++;
-	////cout << "This is turn no: " << mTurnNo << endl;
-	 
+	cout << endl << "Round No: " << mTurnNo << endl;
+
 	int roll;
-	CGameSquare* currentSquare;
-	CPlayer* currentPlayer;
+	CGameSquare* pCurrentSquare;
+	CPlayer* pCurrentPlayer;
+	cout << endl;
 	for (vector<CPlayer*>::iterator player = mPlayers.begin(); player != mPlayers.end(); player++)
 	{
-		currentPlayer = *player;
+		pCurrentPlayer = *player;
 		roll = Random();
 		
-		////cout << "Player: " << currentPlayer->GetPiece() << " Is on " << mGameBoard.at(currentPlayer->GetBoardPosition())->GetName() << endl;
-		////cout << "Player: " << currentPlayer->GetPiece() << " Rolled a " << roll << endl;
-		for (int i = 1; i <= roll; i++)
+		cout << pCurrentPlayer->GetName() << " Rolls a " << roll << endl;
+
+		for (int i = 1; i <= roll; i++)	//Follow through the roll moving one space at a time
 		{
-			currentPlayer->SetBoardPosition(currentPlayer->GetBoardPosition() + 1);
+			//Increment board position
+			pCurrentPlayer->SetBoardPosition(pCurrentPlayer->GetBoardPosition() + 1);
+
+
 			//Loop the piece back to the start of the board
-			if (currentPlayer->GetBoardPosition() >= mGameBoard.size())
+			if (pCurrentPlayer->GetBoardPosition() >= mGameBoard.size())
 			{
-				currentPlayer->SetBoardPosition(0);
+				pCurrentPlayer->SetBoardPosition(0);
 			}
-			currentSquare = mGameBoard.at(currentPlayer->GetBoardPosition());
+			//Set current square
+			pCurrentSquare = mGameBoard.at(pCurrentPlayer->GetBoardPosition());
 
-			if (i != roll)
+			if (i != roll)	//If not at the end of the roll
 			{
-				////cout << "Player: " << currentPlayer->GetPiece() << " passed over " << currentSquare->GetName() << endl;
-				
-				cout << mGameBoard.at(currentPlayer->GetBoardPosition())->OnPassOver(currentPlayer);
+				//Pass over the current square
+				cout << pCurrentSquare->OnPassOver(pCurrentPlayer);	//Perform pass over event
 			}
-			else
+			else	//At end of roll
 			{
-				////cout << "Player: " << currentPlayer->GetPiece() << " landed on " << currentSquare->GetName() << endl;
-				cout << mGameBoard.at(currentPlayer->GetBoardPosition())->OnLand(currentPlayer);
-			}
-		}
+				//Land on the current square
+				cout << pCurrentPlayer->GetName() << " lands on " << pCurrentSquare->GetName() << endl;
+				cout << pCurrentSquare->OnLand(pCurrentPlayer);		//Perform land event
 
-		cout << endl << endl;
-	}
+				//If the current square put the player in jail
+				if (pCurrentPlayer->IsInJail())
+				{
+					for (unsigned int j = 0; j < mGameBoard.size(); j++)	//Find the jail board space
+					{
+						if (mGameBoard.at(j)->GetType() == CATEGORY_JAIL)
+						{
+							//Put player on jail space
+							pCurrentPlayer->SetBoardPosition(j);
+							pCurrentSquare = mGameBoard.at(j);
+							cout << pCurrentSquare->OnLand(pCurrentPlayer);
+
+							j = mGameBoard.size();	//Escape the loop
+
+						}	//End of Jail if
+					}	//End of jail search loop
+
+				}	//End of is in jail if
+			}	//End of roll event selector
+
+		}	//End of roll loop
+
+		//Output how much money the player has
+		cout << pCurrentPlayer->GetName() << " has " << gPOUND << pCurrentPlayer->GetBalance() << endl << endl;
+
+	}	//End Player turns loop
 }
 
-void CMonopoly::PlayTurns(unsigned int noTurns)
+void CMonopoly::PlayNoRounds(unsigned int noTurns)
 {
 	for (unsigned int i = 0; i < noTurns; i++)
 	{
-		this->TakeTurn();
+		this->PlayRound();
 		system("pause");
 	}
 }

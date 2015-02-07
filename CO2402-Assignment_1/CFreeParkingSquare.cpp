@@ -1,7 +1,7 @@
 #include "CFreeParkingSquare.h"
 #include <sstream>
 
-CFreeParkingSquare::CFreeParkingSquare(string iSquareName) : CGameSquare(iSquareName)
+CFreeParkingSquare::CFreeParkingSquare(string iSquareName) : CGameSquare(iSquareName, CATEGORY_FREEPARKING)
 {
 	//No additional construction
 }
@@ -11,20 +11,19 @@ CFreeParkingSquare::~CFreeParkingSquare()
 	//Nothing to destruct
 }
 
-string CFreeParkingSquare::OnPassOver(CPlayer* passingPlayer)	//This function will need to return any output statements either via stringstream or string
+string CFreeParkingSquare::OnPassOver(CPlayer* pPassingPlayer)
 {
-	//Do Nothing
+	//Nothing happens - return blank string
 	return "";
 }
 
-string CFreeParkingSquare::OnLand(CPlayer* landingPlayer)	//This function will need to return any output statements either via stringstream or string
+string CFreeParkingSquare::OnLand(CPlayer* pLandingPlayer)
 {
+	//Create output stream
 	stringstream out;
 	
-	//On land - Output 
-	/* '<Player>lands on Free Parking'
-	'<Player> is resting'
-	*/
+	out << pLandingPlayer->GetName() << " is resting" << endl;
 	
+	//Convert the output to a string and return it
 	return out.str();
 }

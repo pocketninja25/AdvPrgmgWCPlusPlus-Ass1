@@ -51,9 +51,6 @@
     <ClCompile Include="CPropertySquare.cpp">
       <Filter>Source Files\SquareClasses</Filter>
     </ClCompile>
-    <ClCompile Include="CRetailParkSquare.cpp">
-      <Filter>Source Files\SquareClasses</Filter>
-    </ClCompile>
     <ClCompile Include="CSquareFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -102,9 +99,6 @@
       <Filter>Header Files\SquareClasses</Filter>
     </ClInclude>
     <ClInclude Include="CPropertySquare.h">
-      <Filter>Header Files\SquareClasses</Filter>
-    </ClInclude>
-    <ClInclude Include="CRetailParkSquare.h">
       <Filter>Header Files\SquareClasses</Filter>
     </ClInclude>
   </ItemGroup>

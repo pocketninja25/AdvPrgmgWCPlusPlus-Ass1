@@ -13,6 +13,8 @@ using std::cout;
 class CMonopoly
 {
 private:
+	static CMonopoly* mpInstance;	//The instance of this class
+
 	CSquareFactory mSquareCreation;
 	vector<CGameSquare*> mGameBoard;
 
@@ -20,16 +22,22 @@ private:
 
 	unsigned int mTurnNo;
 
+	CMonopoly(int noPlayers);			//Constructor is private - can only be called by this class itself
+	CMonopoly(CMonopoly const&);		//Override default constructor - do not implement
+	void operator=(CMonopoly const&);	//Override = operator - do not implement
 public:
-	CMonopoly();
+	//Returns a new (or the existing pointer to the singleton) - if a new instance is being created returns true in newInst
+	static CMonopoly* GetInstance(int noPlayers = 2);
+
+	//Prevent copies being made
 
 	~CMonopoly();
 
 	void OutputBoard();
 
-	void TakeTurn();
+	void PlayRound();
 
-	void PlayTurns(unsigned int noTurns);
+	void PlayNoRounds(unsigned int noTurns);
 
 };
 

@@ -1,9 +1,8 @@
 #include "CBonusSquare.h"
-
 #include "Random.h"
 #include <sstream>
 
-CBonusSquare::CBonusSquare(string iSquareName) : CGameSquare(iSquareName)
+CBonusSquare::CBonusSquare(string iSquareName) : CGameSquare(iSquareName, CATEGORY_BONUS)
 {
 	//No additional construction
 }
@@ -13,20 +12,22 @@ CBonusSquare::~CBonusSquare()
 	//Nothing to destruct
 }
 
-string CBonusSquare::OnPassOver(CPlayer* passingPlayer)	//This function will need to return any output statements either via stringstream or string
+string CBonusSquare::OnPassOver(CPlayer* pPassingPlayer)
 {
-	//Nothing Happens - Return Blank Text
+	//Nothing Happens - Return Blank String
 	return "";
 }
 
-string CBonusSquare::OnLand(CPlayer* landingPlayer)	//This function will need to return any output statements either via stringstream or string
+string CBonusSquare::OnLand(CPlayer* pLandingPlayer)
 {
+	//Generate a random number - this determines the bonus event that occurs
 	int eventID = Random();
+	//Create output stream
 	stringstream out;
 	 
-	out << landingPlayer->GetName() << " lands on Bonus" << endl;
-	int amountGained = 0;
+	int amountGained = 0;	//The amount of money the player gains from this bonus
 
+	//Output the event name and set the amount of money the player gains
 	switch (eventID)
 	{
 	case 1:
@@ -56,9 +57,12 @@ string CBonusSquare::OnLand(CPlayer* landingPlayer)	//This function will need to
 	default:
 		break;
 	}
-	out << landingPlayer->GetName() << " Gains " << POUND << amountGained << endl;
-	landingPlayer->GiveCash(amountGained);
-	out << landingPlayer->GetName() << " has " << POUND << landingPlayer->GetBalance() << endl;
 
+	//Finish the output (this is output regardless of the bonus selected
+	out << pLandingPlayer->GetName() << " Gains " << gPOUND << amountGained << endl;
+	//Give the player the specified amount of money for the bonus they landed on
+	pLandingPlayer->GiveCash(amountGained);
+
+	//Convert the output to a string and return it
 	return out.str();
 }

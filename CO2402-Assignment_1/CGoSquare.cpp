@@ -1,7 +1,7 @@
 #include "CGoSquare.h"
 #include <sstream>
 
-CGoSquare::CGoSquare(string iSquareName) : CGameSquare(iSquareName)
+CGoSquare::CGoSquare(string iSquareName) : CGameSquare(iSquareName, CATEGORY_GO)
 {
 	//No additional construction
 }
@@ -11,17 +11,26 @@ CGoSquare::~CGoSquare()
 	//Nothing to destruct
 }
 
-string CGoSquare::OnPassOver(CPlayer* passingPlayer)	//This function will need to return any output statements either via stringstream or string
+string CGoSquare::OnPassOver(CPlayer* pPassingPlayer)
 {
-	//On passover - player collects 200£
-	return "";
-	//-'<Player> passes GO and collects £200'}
+	//Create output stream
+	stringstream out;
+	
+	//Output 'Pass Go' message and give player £200
+	out << pPassingPlayer->GetName() << " passes GO and collects " << gPOUND << 200 << endl;
+	pPassingPlayer->GiveCash(200);
+
+	//Convert output to string and return it
+	return out.str();
 }
 
-string CGoSquare::OnLand(CPlayer* landingPlayer)	//This function will need to return any output statements either via stringstream or string
+string CGoSquare::OnLand(CPlayer* pLandingPlayer)
 {
 	stringstream out;
-	//On land - '<Player> lands on GO'
-	//- player collects 200£ (check if an output)
+
+	//Output collection message
+	out << pLandingPlayer->GetName() << " collects " << gPOUND << 200 << endl;
+	pLandingPlayer->GiveCash(200);
+
 	return out.str();
 }

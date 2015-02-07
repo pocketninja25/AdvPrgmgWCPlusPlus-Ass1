@@ -3,23 +3,34 @@
 #include <stdlib.h>
 #include <crtdbg.h>
 
+#ifdef _DEBUG
+#define DEBUG_NEW_PLACEMENT (_NORMAL_BLOCK, __FILE__, __LINE__)
+#else
+#define DEBUG_NEW_PLACEMENT
+#endif
+
 //Game Libraries
 #include "CMonopoly.h"
-#include <sstream>
+
+using std::cin;
+using std::getline;
 
 int main()
 {
-	CMonopoly* pMyGame = new CMonopoly();
+	const int NO_OF_PLAYERS = 2;
+	const int NO_OF_ROUNDS = 20;
+
+	//Create monopoly engine object - parameter is an amount of players
+	CMonopoly* pMyGame = CMonopoly::GetInstance(NO_OF_PLAYERS);
 
 	//pMyGame->OutputBoard();
 
-	pMyGame->PlayTurns(20);
+	//Play 20 rounds of monopoly (each player has 20 turns)
+	pMyGame->PlayNoRounds(NO_OF_ROUNDS);
 
+	//Clean memory
 	delete pMyGame;
-	
-	system("pause");
 
-	_CrtDumpMemoryLeaks();
 	/* EXAMPLE MAIN CODE */
 
 	//CREATE MONOPOLY
@@ -34,36 +45,6 @@ int main()
 
 	/* END OF EXAMPLE MAIN CODE */
 
-	/********MAIN GAME NOTES*********/
-
-	//26 square board 
-	//2 Players
-	//Default - P1 is dog, P2 is car
-	//Players recieve 1500£ at beginning of game - the bank has unlimited money
-	//Each player having one move is called a round - in a round each player takes 1 turn
-		//- rolls the dice, moves clockwise by num of squares.
-	//No user input - game is simulation
-	//Play for 20 rounds
-	//Welcome message - 'Welcome to Monopoly'
-
-	///****TURN DYNAMICS****//
-	//Each turn display '<Player> rolls <number>'
-		//- Followed by '<Player> lands on <square name>'
-	//if property not owned player will buy it (if positive money)
-		//- '<Player> buys <square name> for <cost>’
-		//- if property owned by player who landed, nothing happens
-		//- if property owned by another player - pay owner a fee of £10
-		//- '<Player> pays <rent>’
-		//- '<Player> pays £10 flying costs’ - on airports
-			//- includes something about if special squares not implemented in the documentation - possibly irrelevant
-	//At end of turn display '<Player> has <current balance>’
-	///****END OF TURN DYNAMICS****//
-
-
-	
-	/********END MAIN GAME NOTES*******/
-
-
-
-
+	//Check for memory leaks
+	_CrtDumpMemoryLeaks();
 }

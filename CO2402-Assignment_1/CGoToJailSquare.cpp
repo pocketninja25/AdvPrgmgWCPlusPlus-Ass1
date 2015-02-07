@@ -1,7 +1,7 @@
 #include "CGoToJailSquare.h"
 #include <sstream>
 
-CGoToJailSquare::CGoToJailSquare(string iSquareName) : CGameSquare(iSquareName)
+CGoToJailSquare::CGoToJailSquare(string iSquareName) : CGameSquare(iSquareName, CATEGORY_GOTOJAIL)
 {
 	//No additional construction
 }
@@ -11,19 +11,19 @@ CGoToJailSquare::~CGoToJailSquare()
 	//Nothing to destruct
 }
 
-string CGoToJailSquare::OnPassOver(CPlayer* passingPlayer)	//This function will need to return any output statements either via stringstream or string
+string CGoToJailSquare::OnPassOver(CPlayer* pPassingPlayer)
 {
-	//Nothing Happens
+	//Nothing Happens - Return blank string
 	return "";
 }
 
-string CGoToJailSquare::OnLand(CPlayer* landingPlayer)	//This function will need to return any output statements either via stringstream or string
+string CGoToJailSquare::OnLand(CPlayer* pLandingPlayer)
 {
 	stringstream out;
-	//Output 
-	/*On Land - 
-	//'<Player> lands on Go to Jail'
-	//Put player in jail, (and call jail->OnLand())
-	*/
+
+	//Send player to jail
+	out << pLandingPlayer->GetName() << " goes to Jail" << endl;
+	pLandingPlayer->SetJailState(true);
+	
 	return out.str();
 }

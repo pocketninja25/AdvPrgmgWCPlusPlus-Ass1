@@ -6,17 +6,17 @@ using std::string;
 using std::stringstream;
 using std::endl;
 
-//Generic Square Class (Wants to be abstract most probably)
 #include "CPlayer.h"
 
+//Abstract square class - defines basic event interfaces
 class CGameSquare
 {
 private:
-	//Name - String
-	string mSquareName;
+	string mSquareName;				//Name - String
+	ESquareCategory mSquareType;	//Type of square this is - allows identification of square
 
 public:
-	CGameSquare(string iSquareName);
+	CGameSquare(string iSquareName, ESquareCategory iSquareType);
 	virtual ~CGameSquare();
 
 	//Passes over event function
@@ -26,6 +26,8 @@ public:
 	virtual string OnLand(CPlayer* pLandingPlayer) = 0;
 
 	string GetName();
+
+	ESquareCategory GetType();
 };
 
 #endif

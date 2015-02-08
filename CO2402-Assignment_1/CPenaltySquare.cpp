@@ -11,22 +11,23 @@ CPenaltySquare::~CPenaltySquare()
 	//Nothing to destruct
 }
 
-string CPenaltySquare::OnPassOver(CPlayer* passingPlayer)	//This function will need to return any output statements either via stringstream or string
+string CPenaltySquare::OnPassOver(CPlayer* passingPlayer)	
 {
 	//Nothing Happens
 	return "";
 }
 
-string CPenaltySquare::OnLand(CPlayer* landingPlayer)	//This function will need to return any output statements either via stringstream or string
+string CPenaltySquare::OnLand(CPlayer* landingPlayer)	
 {
 	//Generate a random number - this determines the penalty event that occurs
 	int eventID = Random();
+
 	//Create output stream
 	stringstream out;
 
-	int amountLost = 0;	//The amount of money the player gains from this bonus
+	int amountLost = 0;	//The amount of money the player loses from this penalty
 
-	//Output the event name and set the amount of money the player gains
+	//Output the event name and set the amount of money the player loses - based on random generator
 	switch (eventID)
 	{
 	case 1:
@@ -58,8 +59,9 @@ string CPenaltySquare::OnLand(CPlayer* landingPlayer)	//This function will need 
 		break;
 	}
 
-	//Finish the output (this is output regardless of the bonus selected
+	//Finish the output (this is output regardless of the bonus selected)
 	out << landingPlayer->GetName() << " loses " << gPOUND << amountLost << endl;
+
 	//Give the player the specified amount of money for the bonus they landed on
 	landingPlayer->TakeCash(amountLost);
 

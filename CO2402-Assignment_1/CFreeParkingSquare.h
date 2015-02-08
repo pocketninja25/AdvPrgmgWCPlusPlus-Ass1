@@ -10,12 +10,16 @@ class CFreeParkingSquare : public CGameSquare
 private:
 
 public:
+	//Constructor
 	CFreeParkingSquare(string iSquareName);
 
+	//Destructor
 	virtual ~CFreeParkingSquare();
 
+	//Pass over event
 	string OnPassOver(CPlayer* pPassingPlayer);
 
+	//Land event
 	string OnLand(CPlayer* pLandingPlayer);
 
 

@@ -2,7 +2,6 @@
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
 #include <crtdbg.h>
-
 #ifdef _DEBUG
 #define DEBUG_NEW_PLACEMENT (_NORMAL_BLOCK, __FILE__, __LINE__)
 #else
@@ -17,8 +16,8 @@ using std::getline;
 
 int main()
 {
-	const int NO_OF_PLAYERS = 2;
-	const int NO_OF_ROUNDS = 20;
+	const int NO_OF_PLAYERS = 2;	//No of players playing game
+	const int NO_OF_ROUNDS = 20;	//No of rounds in the game
 
 	//Create monopoly engine object - parameter is an amount of players
 	CMonopoly* pMyGame = CMonopoly::GetInstance(NO_OF_PLAYERS);

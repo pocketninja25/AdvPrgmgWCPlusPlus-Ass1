@@ -28,7 +28,7 @@ string CGoSquare::OnLand(CPlayer* pLandingPlayer)
 {
 	stringstream out;
 
-	//Output collection message
+	//Output collection message and give player £200
 	out << pLandingPlayer->GetName() << " collects " << gPOUND << 200 << endl;
 	pLandingPlayer->GiveCash(200);
 

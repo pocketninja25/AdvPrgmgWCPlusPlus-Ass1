@@ -11,13 +11,13 @@ CJailSquare::~CJailSquare()
 	//Nothing to destruct
 }
 
-string CJailSquare::OnPassOver(CPlayer* pPassingPlayer)	//This function will need to return any output statements either via stringstream or string
+string CJailSquare::OnPassOver(CPlayer* pPassingPlayer)	
 {
 	//Nothing Happens - return blank string
 	return "";
 }
 
-string CJailSquare::OnLand(CPlayer* pLandingPlayer)	//This function will need to return any output statements either via stringstream or string
+string CJailSquare::OnLand(CPlayer* pLandingPlayer)	
 {
 	//Create output stream
 	stringstream out;
@@ -32,7 +32,7 @@ string CJailSquare::OnLand(CPlayer* pLandingPlayer)	//This function will need to
 		pLandingPlayer->SetJailState(false);
 		out << pLandingPlayer->GetName() << " gets out of jail " << endl;
 	}
-	else
+	else	//Not in jail
 	{
 		//Output just visiting text
 		out << pLandingPlayer->GetName() << " is just visiting" << endl;

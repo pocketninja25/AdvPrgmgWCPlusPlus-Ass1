@@ -13,30 +13,35 @@ using std::cout;
 class CMonopoly
 {
 private:
-	static CMonopoly* mpInstance;	//The instance of this class
+	static CMonopoly* mpInstance;		//The instance of this class - used to test new instance
 
-	CSquareFactory mSquareCreation;
-	vector<CGameSquare*> mGameBoard;
+	CSquareFactory mSquareCreation;		//Factory class to generate new game board squares - from file
+	vector<CGameSquare*> mGameBoard;	//List of game board pieces, in order of board position
 
-	vector<CPlayer*> mPlayers;
+	vector<CPlayer*> mPlayers;			//List of players - in playing order
 
-	unsigned int mTurnNo;
+	unsigned int mTurnNo;				//Current turn number
 
 	CMonopoly(int noPlayers);			//Constructor is private - can only be called by this class itself
 	CMonopoly(CMonopoly const&);		//Override default constructor - do not implement
 	void operator=(CMonopoly const&);	//Override = operator - do not implement
+
+	int GetSeed(string fileName);	//Read a value for the seed from the provided file
+
 public:
 	//Returns a new (or the existing pointer to the singleton) - if a new instance is being created returns true in newInst
 	static CMonopoly* GetInstance(int noPlayers = 2);
 
-	//Prevent copies being made
-
+	//Destructor
 	~CMonopoly();
 
+	//Outputs the name of each board piece
 	void OutputBoard();
 
+	//Performs a single game turn
 	void PlayRound();
 
+	//Performs 'noTurns' rounds by calling Playround 'noTurns' times
 	void PlayNoRounds(unsigned int noTurns);
 
 };

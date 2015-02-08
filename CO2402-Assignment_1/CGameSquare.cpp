@@ -12,12 +12,12 @@ CGameSquare::~CGameSquare()
 	//Nothing to destruct
 }
 
-string CGameSquare::GetName()
+string CGameSquare::GetName()	//mSquareName getter
 {
 	return mSquareName;
 }
 
-ESquareCategory CGameSquare::GetType()
+ESquareCategory CGameSquare::GetType()	//mSquareType Getter
 {
 	return mSquareType;
 }

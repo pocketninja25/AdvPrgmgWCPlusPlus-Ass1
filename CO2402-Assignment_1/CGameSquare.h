@@ -16,7 +16,10 @@ private:
 	ESquareCategory mSquareType;	//Type of square this is - allows identification of square
 
 public:
+	//Constructor
 	CGameSquare(string iSquareName, ESquareCategory iSquareType);
+	
+	//Destructor
 	virtual ~CGameSquare();
 
 	//Passes over event function
@@ -25,8 +28,10 @@ public:
 	//Lands on event function
 	virtual string OnLand(CPlayer* pLandingPlayer) = 0;
 
+	//Returns the name of this square
 	string GetName();
 
+	//Returns the type of this square
 	ESquareCategory GetType();
 };
 

@@ -6,6 +6,7 @@ using std::vector;
 #include <fstream>
 using std::ifstream;
 
+//Include headers for various square types
 #include "CGameSquare.h"
 #include "CPropertySquare.h"
 #include "CGoSquare.h"
@@ -18,11 +19,13 @@ using std::ifstream;
 class CSquareFactory
 {
 private:
-	vector<CGameSquare*>* mpSquareList;
-	ifstream mInStream;
+	vector<CGameSquare*>* mpSquareList;	//A pointer to the list of squares square factory is generating
+	ifstream mInStream;					//The file stream being used to read in the game board file
 
-	//Get the name of a square
+	//Get the name of a square - reads it from the file
 	string GetName();
+
+	/* Creator Functions */ //Create an instance of that kind of game square by reading from file*/
 
 	//Create Property Function (1)
 	CGameSquare* CreateProperty();
@@ -48,6 +51,9 @@ private:
 	//Create Free Parking Function (8)
 	CGameSquare* CreateFreeParking();
 
+	/*End of creator functions*/
+
+	//Associates a newly generated CPropertySquare with any CPropertySquares already
 	void AssociateProperty(CPropertySquare* piNewProp);
 
 public:

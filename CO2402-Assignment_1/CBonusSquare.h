@@ -14,7 +14,7 @@ public:
 	//Constructor - Supply name to parent class
 	CBonusSquare(string iSquareName);
 
-	//Destructor - marked as virtual for reference
+	//Destructor - marked as virtual for reference 
 	virtual ~CBonusSquare();
 
 	//When a piece passes over this square

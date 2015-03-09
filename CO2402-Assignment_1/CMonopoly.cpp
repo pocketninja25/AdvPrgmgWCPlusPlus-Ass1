@@ -162,6 +162,15 @@ void CMonopoly::PlayNoRounds(unsigned int noTurns)	//Play 'noTurns' rounds
 	for (unsigned int i = 0; i < noTurns; i++)
 	{
 		this->PlayRound();
-		system("pause");	//Wait for user to confirm round info
+		//system("pause");	//Wait for user to confirm round info
 	}
+}
+
+void CMonopoly::OutputStats()
+{
+	for (unsigned int i = 0; i < mPlayers.size(); i++)
+	{
+		cout << mPlayers[i]->GetName() << " has " << gPOUND << mPlayers[i]->GetBalance() << endl;
+	}
+
 }

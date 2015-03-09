@@ -23,9 +23,13 @@ int main()
 	CMonopoly* pMyGame = CMonopoly::GetInstance(NO_OF_PLAYERS);
 
 	//pMyGame->OutputBoard();
+	pMyGame->OutputStats();
 
 	//Play 20 rounds of monopoly (each player has 20 turns)
 	pMyGame->PlayNoRounds(NO_OF_ROUNDS);
+
+	pMyGame->OutputStats();
+	system("pause");
 
 	//Clean memory
 	delete pMyGame;

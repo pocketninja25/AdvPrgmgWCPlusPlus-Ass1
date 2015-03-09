@@ -84,7 +84,7 @@ CGameSquare* CSquareFactory::CreateProperty()
 
 	//Capture and convert property colour group
 	int group = 0;
-	EPropertyGroup colourGroup = GROUP_BLUE;
+	EPropertyGroup colourGroup = (EPropertyGroup)0;
 	mInStream >> group;
 	colourGroup = (EPropertyGroup) group;
 

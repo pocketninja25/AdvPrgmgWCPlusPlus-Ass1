@@ -47,13 +47,23 @@ string CPropertySquare::OnLand(CPlayer* pLandingPlayer)
 	{
 		if (pLandingPlayer != mpOwner)	//If landing player is not the owner of the property
 		{
+			int rent = this->GetRent();
 			//Pay rent
-			pLandingPlayer->TakeCash(this->GetRent());	//Take rent from lander
-			mpOwner->GiveCash(this->GetRent());			//Give rent to owner
+			pLandingPlayer->TakeCash(rent);	//Take rent from lander
+			mpOwner->GiveCash(rent);		//Give rent to owner
 
 			//Generate output message
 			out << this->GetName() << " is owned by " << mpOwner->GetName() << endl;
-			out << pLandingPlayer->GetName() << " pays " << mpOwner->GetName() << " " << gPOUND << this->GetRent() << " in rent" << endl;
+
+			out << pLandingPlayer->GetName() << " pays " << mpOwner->GetName() << " " << gPOUND << rent;
+			if (mGroup == GROUP_RETAILPARK)	//If the group is fully owned
+			{
+				out << " of Goods" << endl;
+			}
+			else
+			{
+				out << " in rent" << endl;
+			}
 		}
 		else	//Landing player is the owner of the property - no rent to be paid
 		{
@@ -70,7 +80,7 @@ string CPropertySquare::OnLand(CPlayer* pLandingPlayer)
 void CPropertySquare::AddGroupMember (CPropertySquare* pNewMember)	//Add a new member to this property's group list
 {
 	bool alreadyIn = false;		//Whether or not the list already contains the 'pNewMember'
-	for (int i = 0; i < mGroupMembers.size() && !alreadyIn; i++)	//Loop through vector
+	for (unsigned int i = 0; i < mGroupMembers.size() && !alreadyIn; i++)	//Loop through vector
 	{
 		if (mGroupMembers[i] == pNewMember)	//If an existing group member is the same as the proposed new member
 		{
@@ -85,28 +95,31 @@ void CPropertySquare::AddGroupMember (CPropertySquare* pNewMember)	//Add a new m
 
 int CPropertySquare::GetRent()
 {
-	bool groupOwned = true;	//Assume group is fully owned - test for ways it is not fully owned
-	for (vector<CPropertySquare*>::iterator it = mGroupMembers.begin(); it != mGroupMembers.end() && groupOwned; it++)	//Count through other group members until end of list is reached or the group is proven unowned
+	if (mGroup != GROUP_RETAILPARK)	//If the group is not a retail park
 	{
-		if ((*it)->mpOwner == 0)		//If the member's owner is 0 then it has no owner
+		bool groupOwned = true;	//Assume group is fully owned - test for ways it is not fully owned
+		for (vector<CPropertySquare*>::iterator it = mGroupMembers.begin(); it != mGroupMembers.end() && groupOwned; it++)	//Count through other group members until end of list is reached or the group is proven unowned
 		{
-			//If a single member has no owner then the group is not fully owned
-			groupOwned = false;	//Jump out of loop
-		}
-		else	//Member has an owner
-		{
-			if ((*it)->mpOwner != this->mpOwner)	//Test if other group member has same owner as this property
+			if ((*it)->mpOwner == 0)		//If the member's owner is 0 then it has no owner
 			{
-				//Other group member does not have the same owner as this, group is not fully owned
+				//If a single member has no owner then the group is not fully owned
 				groupOwned = false;	//Jump out of loop
 			}
+			else	//Member has an owner
+			{
+				if ((*it)->mpOwner != this->mpOwner)	//Test if other group member has same owner as this property
+				{
+					//Other group member does not have the same owner as this, group is not fully owned
+					groupOwned = false;	//Jump out of loop
+				}
+			}
+		}
+		if (groupOwned)	//If the group is owned
+		{
+			return mRent * 2;	//Return double the rent (but dont modify its beginning value)
 		}
 	}
-
-	if (groupOwned)	//If the group is fully owned
-	{
-		return mRent * 2;	//Return double the rent (but dont modify its beginning value)
-	}
+	//Is a retail park or is not fully owned - normal rent
 	return mRent;	//Return standard rent
 }
 

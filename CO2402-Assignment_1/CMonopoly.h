@@ -26,7 +26,7 @@ private:
 	CMonopoly(CMonopoly const&);		//Override default constructor - do not implement
 	void operator=(CMonopoly const&);	//Override = operator - do not implement
 
-	int GetSeed(string fileName);	//Read a value for the seed from the provided file
+	int GetSeed(string fileName);		//Read a value for the seed from the provided file
 
 public:
 	//Returns a new (or the existing pointer to the singleton) - if a new instance is being created returns true in newInst
@@ -43,6 +43,8 @@ public:
 
 	//Performs 'noTurns' rounds by calling Playround 'noTurns' times
 	void PlayNoRounds(unsigned int noTurns);
+
+	void OutputStats();
 
 };
 
